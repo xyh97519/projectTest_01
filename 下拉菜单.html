@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .nav {
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        li {
+            list-style: none;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        .menu {
+            float: left;
+            margin: 0;
+            padding: 0 10px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #000;
+        }
+        .menu ul {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li class="menu">
+            <a href="">微博</a>
+            <ul>
+                <li>123</li>
+                <li>456</li>
+                <li>789</li>
+            </ul>
+    </li>
+        <li class="menu">
+            <a href="">微博</a>
+            <ul>
+                <li>123</li>
+                <li>456</li>
+                <li>789</li>
+            </ul>
+    </li>
+        <li class="menu">
+            <a href="">微博</a>
+            <ul>
+                <li>123</li>
+                <li>456</li>
+                <li>789</li>
+            </ul>
+    </li>
+        <li class="menu">
+            <a href="">微博</a>
+            <ul>
+                <li>123</li>
+                <li>456</li>
+                <li>789</li>
+            </ul>
+    </li>
+    </ul>
+
+<script>
+    var ul = document.querySelector('.nav');
+    var lis = ul.children;
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function() {
+            this.children[1].style.display = 'block';
+        }
+        lis[i].onmouseout = function() {
+            this.children[1].style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

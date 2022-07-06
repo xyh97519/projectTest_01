@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            width: 852px;
+            height: 69px;
+            list-style: none;
+        }
+        .nav li {
+            float: left;
+            margin-left: 5px;
+            width: 69px;
+            height: 69px;
+            overflow: hidden;
+            border-radius: 5px;
+            
+        } 
+        .nav li a {
+            display: block;
+           position: relative;
+           
+        
+        }
+
+        .nav li a .small{
+            position:absolute;
+            left: 0;
+            top:0;
+            width: 69px;
+            height: 69px;
+            display: block;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li style="width: 224px;">
+                <a href="javasript:;" >
+                    <img src="./images/heroS1.webp" alt="" class="small" style="display: none;">
+                    <img src="./images/heroB1.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javasript:;">
+                    <img src="./images/heroS2.webp" alt="" class="small">
+                    <img src="./images/heroB2.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javasript:;">
+                    <img src="./images/heroS3.webp" alt="" class="small">
+                    <img src="./images/heroB3.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javasript:;">
+                    <img src="./images/heroS4.webp" alt="" class="small">
+                    <img src="./images/herob4.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javasript:;">
+                    <img src="./images/heros5.webp" alt="" class="small">
+                    <img src="./images/herob5.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javasript:;">
+                    <img src="./images/heros6.jpg" alt="" class="small">
+                    <img src="./images/herob6.webp" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javasript:;">
+                    <img src="./images/heros7.webp" alt="" class="small">
+                    <img src="./images/herob7.png" alt="" class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script src="./jquery.mini.js"></script>
+    <script>
+        $(function(){
+            $('.nav li').mouseover(function(){
+                $(this).stop().animate({
+                    width: 224
+                }).find('.small').stop().fadeOut('fast').siblings('.big').stop().fadeIn("fast");
+                $(this).siblings('li').stop().animate({
+                    width:69
+                }).find('.small').stop().fadeIn('fast').siblings('.big').stop().fadeOut("fast");
+            })
+        })
+    </script>
+</body>
+</html>

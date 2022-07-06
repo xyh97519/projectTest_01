@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            position: absolute;
+            margin: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+    <span></span>
+    <script>
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        function animate(obj,target,callback) {
+            
+            clearInterval(obj.timmer);
+            obj.timmer = setInterval(function(){
+                step = Math.ceil((target - obj.offsetLeft) / 50);
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft >= target){
+                    clearInterval(obj.timmer);
+                    if (callback){
+                        callback();
+                    }
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+                // obj.style.top = obj.offsetTop + step + 'px';
+            },10);
+        }
+        animate(div,300);
+    </script>
+</body>
+</html>

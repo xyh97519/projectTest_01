@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* var str = '';
+        for(var i=0; i<5 ;i++){
+            str += '☆';
+        }
+        console.log(str); 打印5个小星星在同一行*/
+        var str = '';
+        var num = prompt('请输入您要打印的星星的行数')
+        var num1 = prompt('请输入第一行你要打印的星星的个数')
+        for (var i = 0; i < num; i++){
+            
+            for (var j = num1; j > i ; j--){
+                str = str + '☆';
+            }
+             str += '\n'  ;
+        }
+        console.log(str);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

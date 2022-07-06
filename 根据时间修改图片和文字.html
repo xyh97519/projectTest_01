@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><img src="./beel.webp" alt=""></div>
+    <div id="text">啤酒好喝</div>
+    <script>
+        var img = document.querySelector('img');
+        var text = document.getElementById('text');
+        var date = new Date();
+        var h = date.getHours();
+        if ( h <= 6 ) {
+            img.src = './pdx.jpg';
+            text.innerHTML = 'pdx真不错';
+        } else if ( h <= 12 ) {
+            img.src = './beel.webp';
+            text.innerHTML = '要来一杯吗？';
+        } else if ( h <= 18) {
+            img.src = './pdx.jpg';
+            text.innerHTML = '你就看看派大星吧！';
+        } else if ( h <= 24) {
+            img.src = './pdx.jpg';
+            text.innerHTML = '看个寂寞,快滚去睡觉！';
+        } else {
+            img.src = '';
+            text.innerHTML = '页面休息中，晚点再来吧~';
+        }
+
+    </script>
+</body>
+</html>

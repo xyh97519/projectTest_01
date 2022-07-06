@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 0 auto;
+            width: 400px;
+            height: 200px;
+            background-color: pink;
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .text {
+            display: none;
+            width: 400px;
+            height: 100px;
+            background-color: #fff;
+        }
+        .input {
+            position: absolute;
+            left: 0;
+            top: 150px;
+            width: 400px;
+            height: 50px;
+        }
+        .input input {
+            margin-top: 14px;
+            margin-left: 10px;
+            width: 300px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="text"></div>
+        <div class="input">
+            <input type="text" placeholder="请输入您的快递单号">
+        </div>
+    </div>
+    <script>
+        var input = document.querySelector('.input');
+        var text = input.querySelector('input');
+        var box = document.querySelector('.text');
+        text.addEventListener('keydown',function(){
+            if (text.value == ''){
+                box.style.display = 'none';
+            }else {
+                box.style.display = 'block';
+                box.innerHTML = this.value;
+            }
+        })
+        text.addEventListener('blur',function(){
+            box.style.display = 'none';
+        })
+        text.addEventListener('focus',function(){
+            if (text.value !== ''){
+            box.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+</html>

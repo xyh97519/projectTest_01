@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 5000px;
+        }
+        li {
+            width: 40px;
+            height: 40px;
+            background-color: #606;
+            margin-top: 10px;
+            list-style: none;
+        }
+        .left_btn {
+            margin: 0;
+        }
+        .btn {
+            float: left;
+        }
+        .content { 
+            float: left;
+            width: 4000px;
+        }
+        .content div {
+            display: none;
+            width: 400px;
+            height: 400px;
+            background-color: #066;
+        }
+    </style>
+    <script src="../../jquery.mini.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="btn">
+            <ul class="left_btn">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                
+            </ul>
+        </div>
+        <div class="content">
+            <div class="div1">1</div>
+            <div class="div2">2</div>
+            <div class="div3">3</div>
+            <div class="div4">4</div>
+            <div class="div5">5</div>
+            <div class="div6">6</div>
+            <div class="div7">7</div>
+            <div class="div8">8</div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $('.left_btn li').mouseover(function(){
+                var index = $(this).index();
+                $('.content div').eq(index).show() .siblings().hide();             
+            })
+            $('.left_btn li').click(function(){
+                $(this).css('backgroundColor','yellow').siblings().css('backgroundColor','');
+            })
+        })
+        // $(this).addClass("类名");添加类名
+        // $(this).removeClass("类名");移除类名
+        // $(this).toggleClass("类名");切换类名
+    </script>
+</body>
+</html>

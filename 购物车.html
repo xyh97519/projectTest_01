@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .shoppingCart {
+            margin: 0 auto;
+            width: 1200px;
+            background-color: #b3de90;
+        }
+        .shoppingCart ul {
+            margin: 0;
+            padding: 0;
+        }
+        .shoppingCart ul li {
+            list-style: none;
+            width: 1200px;
+            height: 100px;
+        }
+        .shoppingCart .product div {
+            float: left; 
+            margin-left: 50px;
+        }
+        .product .calculator a {
+            float: left;
+            display: block;
+            width: 10px;
+            height: 20px;
+            line-height: 20px;
+            color: black;
+            border: 1px solid #ccc;
+            text-align: center;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        }
+        .product .calculator input{
+            float: left; 
+            display: block;
+            width: 25px;
+            height: 20px;
+            text-align: center;
+            height: 20;
+            border: 0;
+            outline: 0;
+            border: 1px solid #ccc;
+            margin: 0;
+            padding: 0;
+        }
+        .shoppingCart .cart_top {
+            width: 1200px;
+            height: 50px;
+            background-color: rgb(144, 133, 202);
+        }
+        .shoppingCart .cart_body {
+            background-color: #fff;
+        }
+        .shoppingCart .cart_bottom {
+            height: 50px;
+            background-color: rgb(114, 103, 103);
+        }
+        .shoppingCart .checkbox {
+            margin-left: 50px;
+            
+        } 
+        .shoppingCart .cart_bottom div {
+            float: left;
+            margin-left: 50px;
+        }
+        
+
+    </style>
+    <script src="./jquery.mini.js"></script>
+</head>
+<body>
+    <div class="shoppingCart">
+        <div class="cart_top">
+            <div class="checkbox">
+                <input type="checkbox" class="checkALL">
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="cart_body">
+            <ul>
+                <li class="product">
+                    <div class="checkbox" >
+                        <input type="checkbox" class="checkSingle">
+                    </div>
+                    <div>商品1</div>
+                    <div class="price">￥12.6</div>
+                    <div class="calculator">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" value="1" class="amount">
+                        <a href="javascript:;" class="increase">+</a>
+                    </div>
+                    <div class="money">￥120</div>
+                    <div>
+                        <a href="javascript:;" class="delete">删除</a>
+                    </div>
+                </li>
+                <li class="product">
+                    <div class="checkbox">
+                        <input type="checkbox" class="checkSingle">
+                    </div>
+                    <div>商品2</div>
+                    <div class="price">￥12.6</div>
+                    <div class="calculator">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" value="1" class="amount">
+                        <a href="javascript:;" class="increase">+</a>
+                    </div>
+                    <div class="money">￥120</div>
+                    <div>
+                        <a href="javascript:;" class="delete">删除</a>
+                    </div>
+                </li>
+                <li class="product">
+                    <div class="checkbox">
+                        <input type="checkbox" class="checkSingle">
+                    </div>
+                    <div>商品3</div>
+                    <div class="price">￥12.6</div>
+                    <div class="calculator">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" value="1" class="amount">
+                        <a href="javascript:;" class="increase">+</a>
+                    </div>
+                    <div class="money">￥120</div>
+                    <div>
+                        <a href="javascript:;" class="delete">删除</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="cart_bottom">
+            <div class="checkbox" >
+                <input type="checkbox" class="checkALL">
+            </div>
+            <div>
+                <a href="javascript:;" class="removeSelect">移除选中商品</a>
+            </div>
+            <div>
+                <a href="javascript:;" class="removeAll">移除全部商品</a>
+            </div>
+            <div></div>
+            <div class="finalAmount">总计<em>1</em>件</div>
+            <div class="totalPrice">总计<em>100</em>元</div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('.checkALL').change(function(){
+                $('.checkSingle,.checkALL').prop('checked',$(this).prop('checked'));
+            })
+            $('.checkSingle').change(function(){
+                if($('.checkSingle:checked').length === $('.checkSingle').length ){
+                    $('.checkALL').prop('checked',true);
+                }else{
+                    $('.checkALL').prop('checked',false);
+                }
+            })
+            
+            $('.increase').click(function(){
+                var num = $(this).siblings('input').val();
+                num++;
+                $(this).siblings('input').val(num);
+                var price = $(this).parent().siblings('.price').text().substr(1);
+                price = (price * num).toFixed(2);
+                $(this).parent().siblings('.money').html('￥' + price);
+                getAmount();
+            })
+            $('.decrease').click(function(){
+                var num = $(this).siblings('input').val();
+                num--;
+                if (num <= 0){
+                    num = 0;
+                }
+                $(this).siblings('input').val(num);
+                var price = $(this).parent().siblings('.price').text().substr(1);
+                price = (price * num).toFixed(2);
+                $(this).parent().siblings('.money').html('￥' + price);
+                getAmount();
+            })
+            $('.amount').change(function(){
+                var num = $(this).val();
+                var price = $(this).parent().siblings('.price').text().substr(1);
+                price = price * num;
+                $(this).parent().siblings('.money').html('￥' + price);
+                getAmount();
+            })
+            function getAmount(){
+                var sum = 0;
+                var price = 0;
+                $.each( $('.amount'),function(i,ele){
+                    sum += parseInt($(ele).val());
+                })
+                $.each($('.money'),function(i,ele){
+                    price += parseFloat($(ele).text().substr(1));
+                })
+                
+                $('.finalAmount em').text(sum);
+                $('.totalPrice em').text(price.toFixed(2));
+            }
+            $('.delete').click(function(){
+                $(this).parents('.product').remove();
+                getAmount();
+            })
+            $('.removeSelect').click(function(){
+                $('.checkSingle:checked').parents(".product").remove();
+                getAmount();
+            })
+            $('.removeAll').click(function(){
+                $('.product').remove();
+                getAmount();
+            })
+        })
+    </script>
+</body>
+</html>

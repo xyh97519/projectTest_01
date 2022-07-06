@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 256px;
+            height: 931px;
+            background-image: url(./pdx.jpg);
+            animation: run 2s linear forwards infinite,
+            pdx 2s linear forwards infinite;          
+        }
+        .box:hover {
+            animation-play-state: paused;
+        }
+        @keyframes pdx {
+            from{
+                background-position: 0 0;
+            }
+            to{
+                background-position: -1020px 0;
+            }
+        }
+        @keyframes run {
+            from{
+                transform: translateX(0);
+            }
+            to{
+                transform: translate(1200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        // event 就是事件对象
+        div.onclick = function(event) {
+            e.preventDefault();
+            e.cancelBubble = true; // 取消冒泡 阻止事件冒泡
+        }
+    </script>
+</body>
+</html>

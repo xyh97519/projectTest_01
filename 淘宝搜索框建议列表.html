@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.mini.js"></script>
+    <script src="./node_modules/art-template/lib/template-web.js"></script>
+</head>
+<body>
+    <div>
+        <input type="text" id="ipt">
+        <button id="search">搜索</button>
+    </div>
+    <div class="suggest_list">
+    </div>
+    <script type="text/html" id="tpl-suggestList">
+        {{each result}}
+        <div class="suggest-item">{{$value[0]}}</div>
+       {{/each}}
+    </script> 
+
+    <script>
+        $(function () {
+            $('#ipt').on('keyup',function () {
+                var keyword = $(this).val().trim();
+                if(keyword.length <= 0){
+                    return
+                }
+                getSuggestList(keyword);
+            })
+            function getSuggestList(kw) {
+                    $.ajax({
+                        url:'https://suggest.taobao.com/sug?q='+ kw,
+                        dataType: 'jsonp',
+                        success: function (res) {
+                            renderSuggestList(res);
+                        }
+
+                    })
+                }
+            // 渲染UI接口
+            function renderSuggestList(res) {
+                if(res.result.length <= 0){
+                    return $('#suggest_list').empty().hide()
+                }
+                var htmlStr = template('tql-suggestList',res)
+                $('#suggest_list').html(htmlStr).show()
+            }
+        })
+    </script>
+</body>
+</html>

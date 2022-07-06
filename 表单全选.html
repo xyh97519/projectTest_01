@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <input type="checkbox" name="" id="j_all">
+                </td>
+                <td>商品</td>
+                <td>价格</td>
+            </tr>
+        </thead>
+        <tbody id="body">
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var j_alls = document.getElementById('j_all');
+        var bodys = document.getElementById('body').getElementsByTagName('input');
+        j_alls.onclick = function () {
+            for (var i = 0; i < bodys.length; i++) {
+                bodys[i].checked = this.checked;
+            }
+        }
+        for (var i = 0; i < bodys.length; i++) {
+            bodys[i].onclick = function() {
+                var flag = true;
+                for (var i = 0; i < bodys.length; i++) {
+                    if (!bodys[i].checked) {
+                        flag = false;
+                    }
+                }
+                j_alls.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>

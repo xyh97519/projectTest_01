@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var judge = 123;
+        var money = 100;
+        var depMoney = 0;
+        var withdrawMoney = 0;
+        
+        while(judge){
+            var count = prompt('请输入您要的操作\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+        switch(count){
+            case '1' :
+                depMoney = prompt('请输入您要存钱的金额');
+                money += parseInt(depMoney);
+                alert('您当前的余额为：' + money );
+                break;
+            case '2' :
+                withdrawMoney = prompt('请输入您要取款的金额');
+                money -= withdrawMoney;
+                alert('您当前的余额为:' + money);
+                break;
+            case '3' :
+                alert('您当前的余额为:' + money);
+                break;
+               
+            case '4' :
+                judge = 0;
+                alert('再见！');
+                continue;
+
+            default :
+                alert('请重新输入您要进行的操作！');
+                break;
+        }
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
